@@ -1,0 +1,20 @@
+const https = require('https')
+const options = {
+  hostname: 'api.datakick.in',
+  port: 6660,
+  path: '/REST/harshJSONGS?API_Key=4abeca6d655f35eb5f32d8852efaf70d',
+  method: 'GET'
+}
+
+const req = https.request(options, res => {
+  console.log(`statusCode: ${res.statusCode}`)
+  res.on('data', d => {
+    console.log(d)
+  })
+})
+
+req.on('error', error => {
+  console.error(error)
+})
+
+req.end()
